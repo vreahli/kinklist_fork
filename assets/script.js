@@ -2,9 +2,9 @@ import { createContext, h, render } from 'https://esm.sh/preact';
 import { useState, useContext, useReducer } from 'https://esm.sh/preact/hooks';
 import htm from 'https://esm.sh/htm';
 import { SCALES, GROUPS } from './config.js';
-import { answersReducer, UNANSWERED, NO_PREF, keyOf } from './answers.js';
+import { answersReducer, UNANSWERED, NO_PREF, keyOf, encode, decode } from './answers.js';
 import { uiReducer, initialUi } from './ui.js';
-import { AppProvider, useUi } from './app.js';
+import { AppProvider, useAnswer, useAnswers, useUi } from './app.js';
 
 const html = htm.bind(h);
 
@@ -13,7 +13,10 @@ const AppContext = createContext(null);
 
 
 const App = () => {
-  const [answers, setAnswers] = useState([]);
+
+  const [answers, dispatchAnswers] = useAnswers();
+
+  const encoded = encode(answers);
 
   return html`
     <div class="bg-black text-white">
@@ -24,6 +27,7 @@ const App = () => {
           <${GroupHeading} />
           <${GroupPreference}/>
           <${GroupPicker}/>
+          <p class="wrap-anywhere">${encoded}</p>
         </div>
       </div>
 
@@ -63,29 +67,52 @@ const GroupPreference = () => {
 
   return html`
     <div class="bg-gray-900">
-      <h3>${group.caption}</h3>
-      ${group.kinks.map(kink => html`
-        <${PreferenceRow} kink=${kink} />
-      `)}
+      ${group.sides.map((side, si) => {
+        return html`
+          <div class="flex justify-between">
+            <h3>${side} - ${group.caption}</h3>
+            <div class="w-60 bg-gray-600 flex">
+              <div class="w-[12.5rem] flex justify-between">
+                <span class="text-xs">Strongly Dislike</span>
+                <span class="text-xs">Strongly Like</span>
+              </div>
+              <span>
+                N/P
+              </span>
+            </div>
+          </div>
+          ${group.kinks.map(kink => html`
+            <${PreferenceRow} kink=${kink} group=${group} side=${si}/>
+          `)}
+        `
+      })}
     </div>
   `
 }
 
-const PreferenceRow = ({kink}) => {
+const PreferenceRow = ({kink, group, side}) => {
   return html`<div class="flex justify-between">
     <div>${kink}</div>
-    <${PreferenceRowPicker} />
+    <${PreferenceRowPicker} kink=${kink} group=${group} side=${side} />
   </div>`
 }
 
-const PreferenceRowPicker = () => {
+const PreferenceRowPicker = ({kink, group, side}) => {
+  const k = keyOf(group, kink, side);
+  const [answer, setAnswer] = useAnswer(k);
+
   return html`<div class="flex bg-gray-950">
-    ${[...Array(6).keys()].map(i => html`
-      <label class="flex-1 w-10 h-10">
+    ${[...Array(6).keys()].map(i => {
+      return html`
+      <label class="flex-1 w-10 h-10 ${answer === i + 1 ? "bg-amber-400" : ""}"
+        onClick=${() => {
+          setAnswer(i + 1)
+        }}
+      >
         <span class="hidden TODO-SCREEN-READER"></span>
-        <span>${i}</span>
+        <span>${i + 1}</span>
       </label>
-    `)}
+    `})}
   </div>`
 }
 

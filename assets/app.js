@@ -27,6 +27,11 @@ export const useAnswer = key => {
   ]
 }
 
+export const useAnswers = () => {
+  const { answers, dispatchAnswers } = useContext(AppContext);
+  return [ answers, dispatchAnswers];
+}
+
 export const useUi = () => {
   const { ui, dispatchUi } = useContext(AppContext);
   return [ui, dispatchUi];
