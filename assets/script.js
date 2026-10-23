@@ -24,7 +24,7 @@ const App = () => {
         <div class="py-2 px-3">
           <${GroupPreference}/>
           <${GroupPicker}/>
-          <p class="wrap-anywhere">${encoded}</p>
+          <p class="wrap-anywhere text-muted font-mono text-xs">${encoded}</p>
         </div>
       </div>
 
@@ -48,12 +48,12 @@ const GroupPreference = () => {
           <span class="grow"></span>
           <div class="flex gap-4">
             ${group.sides.map((side, si) => {
-              return html`<span class="flex flex-1 border md:w-48">${side}</span>`;
+              return html`<span class="flex flex-1 border border-white/10 md:w-48">${side}</span>`;
             })}
           </div>
 
         </div>
-
+      <${GroupProgress} />
       </div>
       ${group.kinks.map(kink => html`
         <${PreferenceRow} kink=${kink} group=${group}/>
@@ -77,7 +77,7 @@ const PreferenceRowPicker = ({kink, group}) => {
         const [answer, setAnswer] = useAnswer(k);
 
         return html`
-        <div class="flex flex-1 border w-48">
+        <div class="flex flex-1 border border-white/10 w-48">
           ${[...Array(6).keys()].map(i => {
             const iPlus = i + 1;
             return html`
@@ -118,7 +118,7 @@ const GroupPicker = ({}) => {
 
 const Matrix = () => {
   return html`
-    <div class="w-24 flex flex-wrap">
+    <div class="w-24 md:w-48 flex flex-wrap">
       ${GROUPS.map(g => g.sides.map((s, si) => g.kinks.map(k => {
         const key = keyOf(g, k, si);
         const [answer, dispatchAnswer] = useAnswer(key);
@@ -129,8 +129,23 @@ const Matrix = () => {
           : answer === 4 ? "bg-gray-700"
           : answer === 5 ? "bg-gray-800"
           : "bg-gray-900";
-        return html`<span class="w-1 h-1 ${color} shrink-0"></span>`
+        return html`<span class="w-1 h-1 md:w-2 md:h-2 ${color} shrink-0"></span>`
       })))}
+    </div>
+  `
+}
+
+const GroupProgress = () => {
+  const [ui, dispatchUi] = useUi();
+  const [answers] = useAnswers();
+  const currentGroup = GROUPS[ui.visibleGroup];
+  const currentGroupKeys = currentGroup.sides.flatMap((s, si) => currentGroup.kinks.map(k => keyOf(currentGroup, k, si)));
+  const answerInGroup = Object.entries(answers).filter(([gk, v]) => currentGroupKeys.includes(gk)).map(([k, v]) => v);
+  const answeredCount = answerInGroup.reduce((pv, cv, ci) => cv === 0 ? pv : pv + 1, 0);
+
+  return html`
+    <div class="h-1 bg-black">
+      <div class="h-1 bg-accent" style="width: ${(answeredCount / currentGroupKeys.length)*100}%" ></div>
     </div>
   `
 }
