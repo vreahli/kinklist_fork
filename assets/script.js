@@ -19,12 +19,9 @@ const App = () => {
   const encoded = encode(answers);
 
   return html`
-    <div class="bg-black text-white">
-      <div class="max-w-3xl mx-auto p-12">
-        <div class="bg-gray-800 py-2 px-3 border border-gray-700">
-          <${FinishedMatrix} />
-          <${Counter} />
-          <${GroupHeading} />
+    <div class="text-fg">
+      <div class="max-w-3xl mx-auto p2">
+        <div class="py-2 px-3">
           <${GroupPreference}/>
           <${GroupPicker}/>
           <p class="wrap-anywhere">${encoded}</p>
@@ -37,82 +34,65 @@ const App = () => {
   `;
 }
 
-const FinishedMatrix = () => {
-  return html`
-    <div class="bg-gray-950 shadow-sm border border-gray-800">
-      Matrix...
-    </div>
-  `
-}
-
-const Counter = () => {
-  return html`
-    <span>69</span>
-  `
-}
-
-const GroupHeading = () => {
-  return html`
-    <div class="bg-gray-950">
-      <span>I am X interested in...</span>
-      <span>Never...Always (no preference)</span>
-    </div>
-  `
-}
-
 const GroupPreference = () => {
   const [ui, dispatchUi] = useUi();
 
   const group = GROUPS[ui.visibleGroup];
 
   return html`
-    <div class="bg-gray-900">
-      ${group.sides.map((side, si) => {
-        return html`
-          <div class="flex justify-between">
-            <h3>${side} - ${group.caption}</h3>
-            <div class="w-60 bg-gray-600 flex">
-              <div class="w-[12.5rem] flex justify-between">
-                <span class="text-xs">Strongly Dislike</span>
-                <span class="text-xs">Strongly Like</span>
-              </div>
-              <span>
-                N/P
-              </span>
-            </div>
+    <div class="">
+      <div class="sticky top-0 bg-background pb-2">
+        <h3>${group.caption}</h3>
+        <${Matrix} />
+        <div class="md:flex md:justify-between">
+          <span class="grow"></span>
+          <div class="flex gap-4">
+            ${group.sides.map((side, si) => {
+              return html`<span class="flex flex-1 border md:w-48">${side}</span>`;
+            })}
           </div>
-          ${group.kinks.map(kink => html`
-            <${PreferenceRow} kink=${kink} group=${group} side=${si}/>
-          `)}
-        `
-      })}
+
+        </div>
+
+      </div>
+      ${group.kinks.map(kink => html`
+        <${PreferenceRow} kink=${kink} group=${group}/>
+      `)}
     </div>
   `
 }
 
-const PreferenceRow = ({kink, group, side}) => {
-  return html`<div class="flex justify-between">
+const PreferenceRow = ({kink, group}) => {
+  return html`<div class="md:flex md:justify-between mb-4">
     <div>${kink}</div>
-    <${PreferenceRowPicker} kink=${kink} group=${group} side=${side} />
+    <${PreferenceRowPicker} kink=${kink} group=${group}/>
   </div>`
 }
 
-const PreferenceRowPicker = ({kink, group, side}) => {
-  const k = keyOf(group, kink, side);
-  const [answer, setAnswer] = useAnswer(k);
+const PreferenceRowPicker = ({kink, group}) => {
+  return html`<div class="flex gap-4">
+    
+      ${group.sides.map((side, si) => {
+        const k = keyOf(group, kink, si);
+        const [answer, setAnswer] = useAnswer(k);
 
-  return html`<div class="flex bg-gray-950">
-    ${[...Array(6).keys()].map(i => {
-      return html`
-      <label class="flex-1 w-10 h-10 ${answer === i + 1 ? "bg-amber-400" : ""}"
-        onClick=${() => {
-          setAnswer(i + 1)
-        }}
-      >
-        <span class="hidden TODO-SCREEN-READER"></span>
-        <span>${i + 1}</span>
-      </label>
-    `})}
+        return html`
+        <div class="flex flex-1 border w-48">
+          ${[...Array(6).keys()].map(i => {
+            const iPlus = i + 1;
+            return html`
+            <label class="grid place-content-center flex-1 w-8 h-8 leading-0 ${answer === i + 1 ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}"
+              onClick=${() => {
+                setAnswer(i + 1)
+              }}
+            >
+              <span class="hidden TODO-SCREEN-READER"></span>
+              <span class="font-mono leading-0">[${iPlus != 6 ? iPlus : "-"}]</span>
+            </label>
+          `})}
+        </div>
+        `})}
+      ${group.sides.length == 1 ? html`<div class="flex flex-1"></div>` : ""}
   </div>`
 }
 
@@ -120,18 +100,37 @@ const GroupPicker = ({}) => {
   const [ui, dispatchUi] = useUi();
 
   return html`
-    <div class="bg-gray-950">
+    <div class="">
       <h1> Group picker </h1>
-      <ul>
+      <ul class="font-mono flex gap-2 flex-wrap">
         ${GROUPS.map((group, i) => html`
           <li
-            class="${i === ui.visibleGroup ? "bg-gray-600" : "bg-gray-700"}"
+            class="inline ${i === ui.visibleGroup ? "bg-accent text-background" : "text-muted"}"
             onClick=${() => {
               dispatchUi({type: "setVisibleGroup", value: i})
             }}
-          )}>${i} - ${group.caption}</li>
+          )}>${group.caption}</li>
         `)}
       </ul>
+    </div>
+  `
+}
+
+const Matrix = () => {
+  return html`
+    <div class="w-24 flex flex-wrap">
+      ${GROUPS.map(g => g.sides.map((s, si) => g.kinks.map(k => {
+        const key = keyOf(g, k, si);
+        const [answer, dispatchAnswer] = useAnswer(key);
+        const color = answer === 0 ? "bg-background"
+          : answer === 1 ? "bg-gray-400"
+          : answer === 2 ? "bg-gray-500"
+          : answer === 3 ? "bg-gray-600"
+          : answer === 4 ? "bg-gray-700"
+          : answer === 5 ? "bg-gray-800"
+          : "bg-gray-900";
+        return html`<span class="w-1 h-1 ${color} shrink-0"></span>`
+      })))}
     </div>
   `
 }

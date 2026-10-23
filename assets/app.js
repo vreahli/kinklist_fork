@@ -1,15 +1,17 @@
 import { h, createContext } from 'https://esm.sh/preact';
 import { useState, useContext, useReducer } from 'https://esm.sh/preact/hooks';
 import htm from 'https://esm.sh/htm';
-import { answersReducer, UNANSWERED, NO_PREF, keyOf } from './answers.js';
+import { answersReducer, UNANSWERED, NO_PREF, keyOf, decode } from './answers.js';
 import { uiReducer, initialUi } from './ui.js';
 
 const html = htm.bind(h);
 
 const AppContext = createContext(null);
 
+const initAnswers = decode(window.location.hash ? window.location.hash.slice(1) :  "");
+
 export const AppProvider = ({ children }) => {
-  const [answers, dispatchAnswers] = useReducer(answersReducer, {});
+  const [answers, dispatchAnswers] = useReducer(answersReducer, {...initAnswers});
   const [ui, dispatchUi] = useReducer(uiReducer, initialUi);
 
   return html`
