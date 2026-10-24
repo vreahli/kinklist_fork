@@ -116,7 +116,7 @@ const GroupPicker = ({}) => {
             onClick=${() => {
               dispatchUi({type: "setVisibleGroup", value: i})
             }}
-          )}>${group.caption}</button>
+          >${group.caption}</button>
         `)}
       </ul>
     </div>
