@@ -1,11 +1,10 @@
-import htm from 'htm';
-import { h, render } from 'preact';
+import { render } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { encode, keyOf, WANT_TO_TRY, NO_PREF } from './answers.js';
 import { AppProvider, useAnswer, useAnswers, useUi } from './app.js';
 import { GROUPS } from './config.js';
-
-const html = htm.bind(h);
+import { MatrixButton, Button} from './Button.js'
+import { html } from './html.js';
 
 const App = () => {
 
@@ -85,14 +84,15 @@ const PreferenceRowPicker = ({kink, group}) => {
           ${[...Array(NO_PREF).keys()].map(i => {
             const iPlus = i + 1;
             return html`
-            <button class="grid place-content-center flex-1 w-8 h-8 leading-0 ${answer === i + 1 ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}"
+            <${MatrixButton}
+              extraClasses=${answer === i + 1 ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}
               onClick=${() => {
                 setAnswer(i + 1)
               }}
             >
               <span class="hidden TODO-SCREEN-READER"></span>
               <span class="font-mono leading-0">[${iPlus == NO_PREF ? "-" : iPlus == WANT_TO_TRY ? "+" : iPlus}]</span>
-            </button>
+            </${MatrixButton}>
           `})}
         </div>
         `})}
@@ -104,7 +104,9 @@ const GroupPicker = ({}) => {
 
   return html`
     <div class="">
-      <h1> Group picker </h1>
+      <div class="flex justify-end">
+        <${Button} onClick=${() => { dispatchUi({type: "setVisibleGroup", value: ui.visibleGroup + 1 % GROUPS.length}) }}>Next ${">"}</${Button}>
+      </div>
       <ul class="font-mono flex gap-2 flex-wrap">
         ${GROUPS.map((group, i) => html`
           <button
