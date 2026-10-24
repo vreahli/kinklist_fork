@@ -1,5 +1,5 @@
 export const initialUi = {
-  visibleGroup: 5, // debug - set to 0
+  visibleGroup: 0,
 }
 
 export const uiReducer = (ui, action) => {

@@ -1,10 +1,8 @@
-import { createContext } from 'https://esm.sh/preact';
-import { useState, useContext, useReducer } from 'https://esm.sh/preact/hooks';
-
 import { GROUPS } from './config.js';
 
 export const UNANSWERED = 0;
-export const NO_PREF = 6;
+export const WANT_TO_TRY = 6;
+export const NO_PREF = 7;
 
 const VERSION = "1_";
 
