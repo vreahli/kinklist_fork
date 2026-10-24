@@ -1,30 +1,24 @@
-import { createContext, h, render } from 'https://esm.sh/preact';
-import { useState, useContext, useReducer } from 'https://esm.sh/preact/hooks';
-import htm from 'https://esm.sh/htm';
-import { SCALES, GROUPS } from './config.js';
-import { answersReducer, UNANSWERED, NO_PREF, keyOf, encode, decode } from './answers.js';
-import { uiReducer, initialUi } from './ui.js';
+import htm from 'htm';
+import { h, render } from 'preact';
+import { useEffect } from 'preact/hooks';
+import { encode, keyOf, WANT_TO_TRY, NO_PREF } from './answers.js';
 import { AppProvider, useAnswer, useAnswers, useUi } from './app.js';
+import { GROUPS } from './config.js';
 
 const html = htm.bind(h);
-
-const AppContext = createContext(null);
-
-
 
 const App = () => {
 
   const [answers, dispatchAnswers] = useAnswers();
-
   const encoded = encode(answers);
+  useEffect(() => { history.replaceState(null, '', '#' + encoded)}, [encoded]);
 
   return html`
     <div class="text-fg">
-      <div class="max-w-3xl mx-auto p2">
+      <div class="max-w-3xl mx-auto p-2">
         <div class="py-2 px-3">
           <${GroupPreference}/>
           <${GroupPicker}/>
-          <p class="wrap-anywhere text-muted font-mono text-xs">${encoded}</p>
         </div>
       </div>
 
@@ -43,6 +37,7 @@ const GroupPreference = () => {
     <div class="">
       <div class="sticky top-0 bg-background pb-2">
         <h3>${group.caption}</h3>
+        <p class="text-muted" dangerouslySetInnerHTML=${{__html: group.description}}></p>
         <${Matrix} />
         <div class="md:flex md:justify-between">
           <span class="grow"></span>
@@ -78,17 +73,17 @@ const PreferenceRowPicker = ({kink, group}) => {
 
         return html`
         <div class="flex flex-1 border border-white/10 w-48">
-          ${[...Array(6).keys()].map(i => {
+          ${[...Array(NO_PREF).keys()].map(i => {
             const iPlus = i + 1;
             return html`
-            <label class="grid place-content-center flex-1 w-8 h-8 leading-0 ${answer === i + 1 ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}"
+            <button class="grid place-content-center flex-1 w-8 h-8 leading-0 ${answer === i + 1 ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}"
               onClick=${() => {
                 setAnswer(i + 1)
               }}
             >
               <span class="hidden TODO-SCREEN-READER"></span>
-              <span class="font-mono leading-0">[${iPlus != 6 ? iPlus : "-"}]</span>
-            </label>
+              <span class="font-mono leading-0">[${iPlus == NO_PREF ? "-" : iPlus == WANT_TO_TRY ? "+" : iPlus}]</span>
+            </button>
           `})}
         </div>
         `})}
@@ -104,12 +99,12 @@ const GroupPicker = ({}) => {
       <h1> Group picker </h1>
       <ul class="font-mono flex gap-2 flex-wrap">
         ${GROUPS.map((group, i) => html`
-          <li
+          <button
             class="inline ${i === ui.visibleGroup ? "bg-accent text-background" : "text-muted"}"
             onClick=${() => {
               dispatchUi({type: "setVisibleGroup", value: i})
             }}
-          )}>${group.caption}</li>
+          )}>${group.caption}</button>
         `)}
       </ul>
     </div>
@@ -122,13 +117,13 @@ const Matrix = () => {
       ${GROUPS.map(g => g.sides.map((s, si) => g.kinks.map(k => {
         const key = keyOf(g, k, si);
         const [answer, dispatchAnswer] = useAnswer(key);
-        const color = answer === 0 ? "bg-background"
-          : answer === 1 ? "bg-gray-400"
-          : answer === 2 ? "bg-gray-500"
-          : answer === 3 ? "bg-gray-600"
-          : answer === 4 ? "bg-gray-700"
-          : answer === 5 ? "bg-gray-800"
-          : "bg-gray-900";
+        const color = answer === 0 ? "bg-accent/10"
+          : answer === 1 ? "bg-accent/30"
+          : answer === 2 ? "bg-accent/40"
+          : answer === 3 ? "bg-accent/50"
+          : answer === 4 ? "bg-accent/60"
+          : answer === 5 ? "bg-accent/70"
+          : "bg-accent/80";
         return html`<span class="w-1 h-1 md:w-2 md:h-2 ${color} shrink-0"></span>`
       })))}
     </div>
