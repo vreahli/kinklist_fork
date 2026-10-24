@@ -144,7 +144,7 @@ const GroupProgress = () => {
   const answeredCount = answerInGroup.reduce((pv, cv, ci) => cv === 0 ? pv : pv + 1, 0);
 
   return html`
-    <div class="h-1 bg-black">
+    <div class="h-1 bg-black border-l-2 border-r-2 border-accent">
       <div class="h-1 bg-accent" style="width: ${(answeredCount / currentGroupKeys.length)*100}%" ></div>
     </div>
   `
