@@ -1,41 +1,57 @@
-const MD = `## Gender Preferences
+const MD = `
+## Gender Preferences
 
-My preferences. TODO - note that you bring your own consent discussion. 
+What do you like? Rate what you're drawn to. Every preference here is valid, and nobody owes an explanation for theirs. 
 
-1 = strongly disagree. 5 = strongly agree. + = want to try.
+[1] = not interested. [5] = very interested. [+] = want to try. [-] = don't care.
 
 Sides: Me
 
-- I enjoy working with males
-- I enjoy working with females
-- I enjoy working with trans people WOW THIS NEEDS A REWORD
-- I enjoy working with gender-fluid people
-- Gender doesn't matter to me
-- I like long trance sessions (maybe split tist/subject)
+- Male partners
+- Female partners
+- Nonbinary / gender-fluid partners
+- Cis partners
+- Trans partners
 
+## About Me - Spectating
+
+Desc todo.
+
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: Me
+
+- Watching others go under
+- Watching others do hypnosis
 ## Session Preferences
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
-- I like working slowly
-- I like working quickly
-- I like working with an unknown partner
-- I like surprises (need to disambiguate, as subject)
+Sides: As Subject, As Hypnotist
+
+- Working slowly
+- Working quickly
+- Working with an unknown partner
+- Working without a plan
+- Knowing what will happen ahead of time
+- Long trance sessions (maybe split tist/subject)
 
 ## Role Preferences
 
 Desc todo.
 
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
 Sides: Me
-- I like being submissive
-- I like being dominant
-- I like being a Switch
+- Subbing
+- Domming
+- Switching
 
 ## About Me - Responses
 
-Desc todo.
+[1] = strongly disagree. [5] = strongly agree. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: Me
 - I experience phenomena easily
@@ -48,20 +64,23 @@ Sides: Me
 
 ## About Me - Care and Aftercare
 
-Desc todo.
+Desc todo. PROBLEM - mixture of like/dislike and needs.
+
+[1] = don't want. [3] = nice to have. [5] = must have. [+] = want to try. [-] = not applicable / don't care. TODO DROP + NO TRY
 
 Sides: Me
-- Patient awakeners
-- Quick awakeners
-- I need time to reorient after a zonk
-- I want removing triggers after the session
-- Knowing what will happen ahead of time
+- A slow, gradual wake up
+- A quick wake up
+- Time to reorient after a zonk
+- Removing triggers after the session
 
 ## Setting
 
 Where you want to do hypnosis.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Text
 - Audio
@@ -73,23 +92,26 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Multiple hypnotists at once
 - Multiple subjects at once (Group Trance)
 - Triggers being used in public
 - Passive Audience
-- Exhibitionism / being shown off
-- Discrete public play
-- Discrete play in kink groups
+- Showing off / being shown off
+- Discreet public play
+- Discreet play in kink groups
 - Open play in kink groups
-- I like watching other go under
-- I like watching others do hypnosis
+
 ## Stimuli
 
 Todo - mention flashing lights carry an epilepsy risk. 
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Binaurals
 - Snapping fingers
@@ -103,7 +125,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Recreational (Non-Erotic)
 - Erotic
@@ -117,7 +141,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Relaxation / PMR
 - Confusion / Overload
@@ -131,7 +157,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 - IQ Play
 - Memory play beyond amnesia
 - Amnesia
@@ -141,7 +169,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Repeating Mantras
 - Mind control
@@ -150,7 +180,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Puppy play
 - Bratting
@@ -161,7 +193,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Feeling of floating / sinking
 - Emotional suggestions
@@ -179,7 +213,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Furry
 - Feral
@@ -195,15 +231,16 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Submission
 - Obedience
 - Captivity / helplessness
-- Ordering to undress
-- Ordering to masturbate
-- Ordering to do something
-- Ordering to do something
+- Undressing on command
+- Masturbating on command
+- Following/giving orders
 - Degradation
 - Humiliation
 - Hypnotic bondage
@@ -211,7 +248,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Edging
 - Denial
@@ -222,9 +261,11 @@ Sides: As Hypnotist, As Subject
 
 ## Vibes
 
-I want to feel...
+How do you want to feel during a session?
 
-Sides: As Hypnotist, As Subject
+[1] = I hate feeling... [5] = I love feeling... [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Beautiful and Sexy
 - Empowered and focused
@@ -238,7 +279,9 @@ Sides: As Hypnotist, As Subject
 
 Desc todo.
 
-Sides: As Hypnotist, As Subject
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+
+Sides: As Subject, As Hypnotist
 
 - Consensual non consent
 - Simulated Blackmail
@@ -246,8 +289,6 @@ Sides: As Hypnotist, As Subject
 - Pain triggers
 - Using triggers without warning
 - Dropping without warning
-
-
 `;
 
 const parse = (md) => {
@@ -262,7 +303,6 @@ const parse = (md) => {
     } else if (!line || !g) {
       // No group or no line? Skip...
     } else if (/^sides:/i.test(line)) {
-      console.log('sides', line)
       g.sides = line.slice(6).split(",").map(s => s.trim());
     } else if (line.startsWith("- ")) {
       g.kinks.push(line.slice(2).trim())
