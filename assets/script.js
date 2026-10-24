@@ -35,16 +35,24 @@ const GroupPreference = () => {
 
   return html`
     <div class="">
-      <div class="sticky top-0 bg-background pb-2">
-        <h3>${group.caption}</h3>
-        ${group.descriptions.map(gd => html`<p class="text-muted" dangerouslySetInnerHTML=${{__html: gd}}></p>`)}
+      <h3 class="text-lg uppercase mb-2">${group.caption}</h3>
+      ${group.descriptions.slice(0, -1).map(gd => html`<p class="text-muted leading-tight mb-4" dangerouslySetInnerHTML=${{__html: gd}}></p>`)}
+
+      <div class="sticky top-0 py-2 bg-background">
+        <div class="flex gap-4">
+          <div>
+            <p class="text-muted leading-tight mb-4" dangerouslySetInnerHTML=${{__html: group.descriptions.at(-1)}}></p>
+          </div>
+          <div>
+            <${Matrix} />
+          </div>
+        </div>
         
-        <${Matrix} />
         <div class="md:flex md:justify-between">
           <span class="grow"></span>
           <div class="flex gap-4">
             ${group.sides.map((side, si) => {
-              return html`<span class="flex flex-1 border border-white/10 md:w-48">${side}</span>`;
+              return html`<span class="flex flex-1 md:w-48">${side}</span>`;
             })}
           </div>
 
@@ -73,7 +81,7 @@ const PreferenceRowPicker = ({kink, group}) => {
         const [answer, setAnswer] = useAnswer(k);
 
         return html`
-        <div class="flex flex-1 border border-white/10 w-48">
+        <div class="flex flex-1 w-48">
           ${[...Array(NO_PREF).keys()].map(i => {
             const iPlus = i + 1;
             return html`
