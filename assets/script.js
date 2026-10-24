@@ -88,7 +88,6 @@ const PreferenceRowPicker = ({kink, group}) => {
           `})}
         </div>
         `})}
-      ${group.sides.length == 1 ? html`<div class="flex flex-1"></div>` : ""}
   </div>`
 }
 
