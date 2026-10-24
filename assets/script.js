@@ -15,7 +15,7 @@ const App = () => {
   return html`
     <div class="text-fg">
       <div class="max-w-3xl mx-auto p-2">
-        <div class="py-2 px-3">
+        <div class="py-2">
           <${GroupPreference}/>
           <${GroupPicker}/>
         </div>
@@ -23,7 +23,9 @@ const App = () => {
 
     </div>
 
-    <footer id="footer">Data stolen with ♥ from Herald</footer>
+    <footer class="text-muted max-w-3xl mx-auto p-2 text-center">
+      By <a class="hover:text-accent" href="https://yourinductionsucks.fyi">yourinductionsucks.fyi</a> . <a class="hover:text-accent" href="https://github.com/vreahli/kinklist_fork">GitHub</a> . Forked from <a class="hover:text-accent" href="https://github.com/NanoAi/KinkList">NanoAi</a> <br /> Data stolen and modified originally from some dude called Herald
+    </footer>
   `;
 }
 
