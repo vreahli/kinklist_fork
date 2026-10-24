@@ -37,7 +37,8 @@ const GroupPreference = () => {
     <div class="">
       <div class="sticky top-0 bg-background pb-2">
         <h3>${group.caption}</h3>
-        <p class="text-muted" dangerouslySetInnerHTML=${{__html: group.description}}></p>
+        ${group.descriptions.map(gd => html`<p class="text-muted" dangerouslySetInnerHTML=${{__html: gd}}></p>`)}
+        
         <${Matrix} />
         <div class="md:flex md:justify-between">
           <span class="grow"></span>

@@ -1,7 +1,8 @@
-const MD = `
-## Gender Preferences
+const MD = `## Gender Preferences
 
-My preferences - strongly agree / strongly disagree. TODO - note that you bring your own consent discussion.
+My preferences. TODO - note that you bring your own consent discussion. 
+
+1 = strongly disagree. 5 = strongly agree. + = want to try.
 
 Sides: Me
 
@@ -245,6 +246,8 @@ Sides: As Hypnotist, As Subject
 - Pain triggers
 - Using triggers without warning
 - Dropping without warning
+
+
 `;
 
 const parse = (md) => {
@@ -254,7 +257,7 @@ const parse = (md) => {
   md.split(/\r?\n/).forEach((raw, i) => {
     const line = raw.trim();
     if (line.startsWith("## ")) {
-      g = { caption: line.slice(3).trim(), kinks: [], sides: [], description: ""};
+      g = { caption: line.slice(3).trim(), kinks: [], sides: [], descriptions: []};
       groups.push(g);
     } else if (!line || !g) {
       // No group or no line? Skip...
@@ -264,7 +267,7 @@ const parse = (md) => {
     } else if (line.startsWith("- ")) {
       g.kinks.push(line.slice(2).trim())
     } else {
-      g.description = g.description ? `${g.description} ${line}` : line;
+      g.descriptions.push(line);
     }
   })
 
