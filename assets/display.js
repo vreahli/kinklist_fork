@@ -7,28 +7,42 @@ export const Display = () => {
   const [answers, dispatchAnswers] = useAnswers();
   console.warn('todo - should this get answers from the loaded url? Should I pick local or url?');
 
-  return html `
-    <div class="grid grid-cols-3 gap-2">
-    ${GROUPS.map(g => g.sides.map((s, si) => {
-      const grouped = g.kinks.reduce((acc, kink) => {
-        console.log({acc, kink})
+  const displayGroups = GROUPS.reduce((acc, g) => {
+    const {caption, descriptions} = g;
+    g.sides.forEach((side, si) => {
+      const kinkVals = g.kinks.reduce((accKink, kink) => {
         const prefVal = getAnswer(keyOf(g, kink, si), answers);
-        (acc[prefVal] = acc[prefVal] || []).push(kink);
-        return acc;
+        if(!accKink[prefVal]) { accKink[prefVal] = []};
+        accKink[prefVal].push(kink);
+        return accKink;
       }, {})
 
+      if(!acc[side]) { acc[side] = [];}
+      acc[side].push({caption, descriptions, kinkVals});
+    });
 
-      return html`
-        <div class="p-2 border">
-          <h1 class="text-xl">${g.caption} - ${s}</h1>
-          ${Object.entries(grouped).map(([pref, kinks]) => html`
-            <div class="text-xs">Pref ${pref}: ${kinks.map(k => html`<span>${k}</span> `)}</div>
-          `)}
-        </div>
-      `
-    }))}
-    </div>
-  `
+    return acc;
+  }, {})
+
+  console.log({displayGroups})
+
+  return html `
+    ${Object.entries(displayGroups).map(([sideCaption, sideGroup]) => html`
+      <h1 class="text-2xl">${sideCaption}</h1>
+      <div class="grid grid-cols-3 gap-2 mb-4">
+        ${sideGroup.map(({caption, descriptions, kinkVals}) => html`
+          <div class="p-2 border">
+            <h1 class="text-xl uppercase">${caption}</h1>
+            ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => html`
+              <p>
+                <span>${prefVal}</span> - ${kinks.map(k => html`<span>${k}</span> `)}
+              </p>
+            `)}
+          </div>
+        `)}
+      </div>
+    `)}
+  `;
 }
 
 // pass answers in so we don't have to reload it each time
