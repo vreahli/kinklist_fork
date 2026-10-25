@@ -1,5 +1,5 @@
 import { html } from './html.js';
-import { GROUPS } from './config.js'
+import { GROUPS, getPrefText } from './config.js'
 import { useAnswers } from "./app.js";
 import { keyOf } from './answers.js';
 
@@ -8,7 +8,7 @@ export const Display = () => {
   console.warn('todo - should this get answers from the loaded url? Should I pick local or url?');
 
   const displayGroups = GROUPS.reduce((acc, g) => {
-    const {caption, descriptions} = g;
+    const {caption, descriptions, scale} = g;
     g.sides.forEach((side, si) => {
       const kinkVals = g.kinks.reduce((accKink, kink) => {
         const prefVal = getAnswer(keyOf(g, kink, si), answers);
@@ -18,24 +18,22 @@ export const Display = () => {
       }, {})
 
       if(!acc[side]) { acc[side] = [];}
-      acc[side].push({caption, descriptions, kinkVals});
+      acc[side].push({caption, descriptions, kinkVals, scale});
     });
 
     return acc;
   }, {})
 
-  console.log({displayGroups})
-
   return html `
     ${Object.entries(displayGroups).map(([sideCaption, sideGroup]) => html`
       <h1 class="text-2xl">${sideCaption}</h1>
-      <div class="grid grid-cols-3 gap-2 mb-4">
-        ${sideGroup.map(({caption, descriptions, kinkVals}) => html`
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        ${sideGroup.map(({caption, descriptions, kinkVals, scale}) => html`
           <div class="p-2 border">
-            <h1 class="text-xl uppercase">${caption}</h1>
+            <h1 class="text-xl uppercase leading-tight mb-4">${caption}</h1>
             ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => html`
               <p>
-                <span>${prefVal}</span> - ${kinks.map(k => html`<span>${k}</span> `)}
+                <span>${getPrefText(scale, prefVal)}</span> - ${kinks.map(k => html`<span>${k}</span> `)}
               </p>
             `)}
           </div>

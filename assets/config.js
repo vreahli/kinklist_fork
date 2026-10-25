@@ -1,4 +1,5 @@
 const MD = `
+
 ## Gender Preferences
 
 What do you like? Rate what you're drawn to.
@@ -6,6 +7,7 @@ What do you like? Rate what you're drawn to.
 [1] = not interested. [5] = very interested. [+] = want to try. [-] = don't care.
 
 Sides: Me
+Scale: interest
 
 - Male partners
 - Female partners
@@ -20,6 +22,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: Me
+Scale: love
 
 - Watching others go under
 - Watching others do hypnosis
@@ -30,6 +33,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Working slowly
 - Working quickly
@@ -45,6 +49,8 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: Me
+Scale: love
+
 - Subbing
 - Domming
 - Switching
@@ -54,6 +60,8 @@ Sides: Me
 [1] = strongly disagree. [5] = strongly agree. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: Me
+Scale: love
+
 - I experience phenomena easily
 - I drop very easily
 - I move or twitch a lot while under
@@ -69,6 +77,8 @@ Desc todo. PROBLEM - mixture of like/dislike and needs.
 [1] = don't want. [3] = nice to have. [5] = must have. [+] = want to try. [-] = not applicable / don't care. TODO DROP + NO TRY
 
 Sides: Me
+Scale: needs
+
 - A slow, gradual wake up
 - A quick wake up
 - Time to reorient after a zonk
@@ -81,6 +91,7 @@ Where you want to do hypnosis.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Text
 - Audio
@@ -95,6 +106,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Multiple hypnotists at once
 - Multiple subjects at once (Group Trance)
@@ -112,6 +124,7 @@ Todo - mention flashing lights carry an epilepsy risk.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Binaurals
 - Snapping fingers
@@ -128,6 +141,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Recreational (Non-Erotic)
 - Erotic
@@ -144,6 +158,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Relaxation / PMR
 - Confusion / Overload
@@ -160,6 +175,8 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
+
 - IQ Play
 - Memory play beyond amnesia
 - Amnesia
@@ -172,6 +189,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Repeating Mantras
 - Mind control
@@ -183,6 +201,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Puppy play
 - Bratting
@@ -196,6 +215,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Feeling of floating / sinking
 - Emotional suggestions
@@ -216,6 +236,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Furry
 - Feral
@@ -234,6 +255,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Submission
 - Obedience
@@ -251,6 +273,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Edging
 - Denial
@@ -266,6 +289,7 @@ How do you want to feel during a session as a subject? Or - how do you like to m
 [1] = I hate feeling... [5] = I love feeling... [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love_feeling
 
 - Beautiful and Sexy
 - Empowered and focused
@@ -282,6 +306,7 @@ Desc todo.
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
 
 Sides: As Subject, As Hypnotist
+Scale: love
 
 - Consensual non consent
 - Simulated Blackmail
@@ -289,7 +314,24 @@ Sides: As Subject, As Hypnotist
 - Pain triggers
 - Using triggers without warning
 - Dropping without warning
+
+
 `;
+
+export const SCALES = {
+  "interest": {
+    prefText: ["Unspecified", "Not interested", "Slightly disinterested", "Neutral", "Interested", "Very interested", "Want to try", "Don't care / NA"]
+  },
+  "love": {
+    prefText: ["Unspecified", "Hate it", "Dislike", "Neutral", "Like it", "Love it", "Want to try", "Don't care / NA"]
+  },
+  "needs": {
+    prefText: ["Unnecessary", "Don't want it", "Can do without", "It's OK", "Pretty important", "Must have", "UNUSED", "UNUSED"]
+  },
+  "love_feeling": {
+    prefText: ["Unspecified", "Hate feeling", "Dislike", "Neutral", "Like feeling", "Love feeling", "Want to try", "Don't care / NA"]
+  },
+}
 
 const parse = (md) => {
   const groups = [];
@@ -302,8 +344,15 @@ const parse = (md) => {
       groups.push(g);
     } else if (!line || !g) {
       // No group or no line? Skip...
+    } else if (line.startsWith("//")) {
+      // it's a comment
     } else if (/^sides:/i.test(line)) {
       g.sides = line.slice(6).split(",").map(s => s.trim());
+    } else if (/^scale:/i.test(line)) {
+      if(g.scale) {
+        console.warn(`Warning - scale already set, overwriting: ${line}`)
+      }
+      g.scale = line.slice(6).trim();
     } else if (line.startsWith("- ")) {
       g.kinks.push(line.slice(2).trim())
     } else {
@@ -316,3 +365,7 @@ const parse = (md) => {
 
 export const GROUPS = parse(MD);
 
+export const getPrefText = (scale, iStr) => {
+  const i = parseInt(iStr, 10);
+  return SCALES[scale]["prefText"][i];
+}
