@@ -1,7 +1,7 @@
 const MD = `
 ## Gender Preferences
 
-What do you like? Rate what you're drawn to. Every preference here is valid, and nobody owes an explanation for theirs. 
+What do you like? Rate what you're drawn to.
 
 [1] = not interested. [5] = very interested. [+] = want to try. [-] = don't care.
 
@@ -187,7 +187,7 @@ Sides: As Subject, As Hypnotist
 - Puppy play
 - Bratting
 - Resistance Play
-- Seduction (disambiguate - I like being seduced / I like seducing)
+- Being Seduced / Seducing
 
 ## Phenomena / Sensations
 
@@ -261,7 +261,7 @@ Sides: As Subject, As Hypnotist
 
 ## Vibes
 
-How do you want to feel during a session?
+How do you want to feel during a session as a subject? Or - how do you like to make your subject feel during a session.
 
 [1] = I hate feeling... [5] = I love feeling... [+] = want to try. [-] = not applicable / don't care.
 
