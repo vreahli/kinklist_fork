@@ -110,8 +110,9 @@ const GroupPicker = ({}) => {
         ${(ui.visibleGroup > 0)
           ? html`
             <${Button} onClick=${
-              () => { dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup - 1) % GROUPS.length})
-                window.scrollTo({top: 0, behavior: 'smooth'})
+              () => {
+                dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup - 1) % GROUPS.length});
+                window.scrollTo({top: 0, behavior: 'instant'});
               }}
             >${"<"}Prev</${Button}>`
           : html`<span></span>`
@@ -119,8 +120,9 @@ const GroupPicker = ({}) => {
         ${(ui.visibleGroup + 1 < GROUPS.length)
             ? html`
               <${Button} onClick=${
-              () => { dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup + 1) % GROUPS.length})
-                window.scrollTo({top: 0, behavior: 'smooth'})
+              () => {
+                window.scrollTo({top: 0, behavior: 'instant'});
+                dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup + 1) % GROUPS.length});
               }}
             >Next${">"}</${Button}>`
           : html``
@@ -128,8 +130,9 @@ const GroupPicker = ({}) => {
         ${(ui.visibleGroup + 1 == GROUPS.length)
           ? html`
             <${Button} onClick=${
-              () => { dispatchUi({type: "setVisiblePage", value: PAGE_SHARE })
-                window.scrollTo({top: 0, behavior: 'smooth'})
+              () => {
+                window.scrollTo({top: 0, behavior: 'instant'});
+                dispatchUi({type: "setVisiblePage", value: PAGE_SHARE });
               }}
             >Share${">"}</${Button}>`
           : html``
