@@ -9,9 +9,12 @@ export const MatrixButton = ({children, extraClasses, onClick}) => {
   </button>`
 }
 
-export const Button = ({children, onClick}) => {
- return html`<button
-  class="cursor-pointer font-mono font-bold grid place-content-center h-8 leading-0 uppercase"
+export const Button = ({children, onClick, state}) => {
+  const extraClasses =
+    state === 'active' ? "bg-accent" : "";
+
+  return html`<button
+  class="cursor-pointer font-mono font-bold grid place-content-center h-8 leading-0 uppercase ${extraClasses}"
   onClick=${onClick}>
     [${children}]
   </button>`
