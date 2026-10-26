@@ -3,9 +3,10 @@ import { AppProvider, useUi } from './app.js';
 import { html } from './html.js';
 import { Picker } from './picker.js';
 import { Display } from './display.js';
-import { PAGE_DISPLAY_ME, PAGE_DISPLAY_LINKED, PAGE_PICKER } from './ui.js';
+import { PAGE_DISPLAY_ME, PAGE_DISPLAY_LINKED, PAGE_PICKER, PAGE_SHARE } from './ui.js';
 import { Button } from './Button.js';
 import { useAnswers } from './app.js';
+import { Share } from './share.js';
 
 const App = () => {
   const [ui, dispatchUi] = useUi();
@@ -33,10 +34,17 @@ const App = () => {
               }}
               state=${ui.visiblePage === PAGE_DISPLAY_LINKED ? "active" : "inactive"}
             >Display Linked Prefs</${Button}>
+            <${Button}
+              onClick=${() => {
+                dispatchUi({type: "setVisiblePage", value: PAGE_SHARE})
+              }}
+              state=${ui.visiblePage === PAGE_SHARE ? "active" : "inactive"}
+            >Share</${Button}>
           </div>
           ${  ui.visiblePage === PAGE_DISPLAY_ME     ? html`<${Display} />`
             : ui.visiblePage === PAGE_DISPLAY_LINKED ? html`<${Display} />`
             : ui.visiblePage === PAGE_PICKER         ? html`<${Picker} />`
+            : ui.visiblePage === PAGE_SHARE          ? html`<${Share} />`
             : html`<h1>Error - invalid page. </h1>`
           }
         </div>

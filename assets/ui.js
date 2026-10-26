@@ -1,6 +1,7 @@
 export const PAGE_PICKER = "PAGE_PICKER";
 export const PAGE_DISPLAY_ME = "PAGE_DISPLAY_ME";
 export const PAGE_DISPLAY_LINKED = "PAGE_DISPLAY_LINKED";
+export const PAGE_SHARE = "PAGE_SHARE";
 
 export const initialUi = {
   visibleGroup: 0,
