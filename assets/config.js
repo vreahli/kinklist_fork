@@ -1,7 +1,7 @@
 const MD = `
 ## Gender Preferences
 
-What do you like? Rate what you're drawn to.
+What do you like? Rate what you're drawn to. Or just mark everything as NA if you don't care.
 
 Sides: Me
 Scale: interest
@@ -36,7 +36,7 @@ Scale: love
 
 ## Role Preferences
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+What power dynamics do you prefer, if any?
 
 Sides: Me
 Scale: love
@@ -47,6 +47,8 @@ Scale: love
 - No power dynamics
 
 ## Responses
+
+How do you respond suggestion, in general? This can change over time and depending on context.
 
 Sides: Me
 Scale: agree
@@ -94,8 +96,8 @@ What if other people are involved?
 Sides: As Subject, As Hypnotist
 Scale: love
 
-- Multiple hypnotists at once
-- Multiple subjects at once (Group Trance)
+- Multiple 'tists teaming Up
+- Group Drops
 - Triggers being used in public
 - Passive Audience
 - Showing off / being shown off
@@ -105,7 +107,7 @@ Scale: love
 
 ## Stimuli
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Props? Everyone loves props. Except those of us who don't.
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -288,7 +290,7 @@ export const SCALES = {
     prefText: ["Unspecified", "Hate it", "Dislike", "Neutral", "Like it", "Love it", "Want to try", "Don't care / NA"]
   },
   "needs": {
-    prefText: ["Unnecessary", "Don't want it", "Can do without", "It's OK", "Pretty important", "Must have", "UNUSED", "UNUSED"]
+    prefText: ["Unnecessary", "Don't want it", "Can do without", "It's OK", "Pretty important", "Must have", "UNUSED", "Don't care / NA"]
   },
   "love_feeling": {
     prefText: ["Unspecified", "Hate feeling", "Dislike", "Neutral", "Like feeling", "Love feeling", "Want to try", "Don't care / NA"]

@@ -1,7 +1,7 @@
 import { html } from './html.js';
 import { AppProvider, useAnswer, useAnswers, useUi } from './app.js';
 import { GROUPS, SCALES } from './config.js';
-import { encode, keyOf, WANT_TO_TRY, NO_PREF } from './answers.js';
+import { encode, keyOf, WANT_TO_TRY, NO_PREF, UNANSWERED } from './answers.js';
 import { useEffect } from 'preact/hooks';
 import { MatrixButton, Button } from './Button.js'
 import { setLocalStorage } from './localStorage.js';
@@ -23,7 +23,7 @@ const GroupPreference = () => {
 
   const group = GROUPS[ui.visibleGroup];
 
-  const scale = (SCALES[group.scale])['prefText'];
+  const scaleConfig = (SCALES[group.scale])['prefText'];
 
   return html`
     <div class="">
@@ -35,7 +35,7 @@ const GroupPreference = () => {
           <div>
             <p class="text-muted leading-tight mb-4" dangerouslySetInnerHTML=${{__html: group.descriptions.at(-1)}}></p>
             <p class="text-muted leading-tight mb-4">
-              ${scale.map((t, i) => html`<span class="font-bold font-mono">[${getNumText(i)}]</span> = <span>${t}</span>. `)}
+              ${getScaleDescriptionLine(scaleConfig)}
             </p>
           </div>
           <div>
@@ -79,11 +79,20 @@ const PreferenceRowPicker = ({kink, group}) => {
         <div class="flex flex-1 w-48">
           ${[...Array(NO_PREF).keys()].map(i => {
             const iPlus = i + 1;
+
+            if(group.scale == "needs" && iPlus == WANT_TO_TRY) {
+              return html``;
+            }
+
             return html`
             <${MatrixButton}
-              extraClasses=${answer === i + 1 ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}
+              extraClasses=${answer === iPlus ? "bg-accent text-background hover:text-background" : "text-muted hover:text-fg"}
               onClick=${() => {
-                setAnswer(i + 1)
+                if(answer === iPlus) {
+                  setAnswer(UNANSWERED)
+                } else {
+                  setAnswer(iPlus)
+                }
               }}
             >
               ${getNumText(iPlus)}
@@ -170,4 +179,13 @@ const GroupProgress = () => {
 const getNumText = (iStr) => {
   const i = parseInt(iStr);
   return i == NO_PREF ? "-" : i == WANT_TO_TRY ? "+" : i;
+}
+
+const getScaleDescriptionLine = (scale) => {
+  return scale.map((text, i) =>
+      i === 0 ? html``
+    : i === 2 ? html``
+    : i === 4 ? html``
+    : html`<span class="font-bold font-mono">[${getNumText(i)}]</span> = <span>${text}</span>. `
+  );
 }
