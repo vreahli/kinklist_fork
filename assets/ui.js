@@ -1,12 +1,10 @@
 export const PAGE_PICKER = "PAGE_PICKER";
 export const PAGE_DISPLAY = "PAGE_DISPLAY";
-export const DISPLAY_SIDE_SUBJECT = "DISPLAY_SIDE_SUBJECT";
-export const DISPLAY_SIDE_TIST = "DISPLAY_SIDE_TIST";
 
 export const initialUi = {
   visibleGroup: 0,
   visiblePage: PAGE_DISPLAY,
-  displaySide: DISPLAY_SIDE_SUBJECT,
+  displaySide: "Me",
 }
 
 export const uiReducer = (ui, action) => {
@@ -15,6 +13,8 @@ export const uiReducer = (ui, action) => {
       return { ...ui, visibleGroup: action.value };
     case "setVisiblePage":
       return { ...ui, visiblePage: action.value };
+    case "setDisplaySide":
+      return { ...ui, displaySide: action.value };
     default:
       console.warn("Hit default in uiReducer. Something might be up.")
       return ui;

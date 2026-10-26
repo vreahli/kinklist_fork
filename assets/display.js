@@ -2,9 +2,12 @@ import { html } from './html.js';
 import { GROUPS, getPrefText } from './config.js'
 import { useAnswers } from "./app.js";
 import { keyOf } from './answers.js';
+import { useUi } from './app.js';
 
 export const Display = () => {
   const [answers, dispatchAnswers] = useAnswers();
+  const [ui, dispatchUi] = useUi();
+
   console.warn('todo - should this get answers from the loaded url? Should I pick local or url?');
 
   const displayGroups = GROUPS.reduce((acc, g) => {
@@ -23,6 +26,8 @@ export const Display = () => {
 
     return acc;
   }, {})
+
+  Object.keys(displayGroups);
 
   return html `
     ${Object.entries(displayGroups).map(([sideCaption, sideGroup]) => html`
