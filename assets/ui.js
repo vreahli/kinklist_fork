@@ -13,6 +13,8 @@ export const uiReducer = (ui, action) => {
   switch (action.type) {
     case "setVisibleGroup":
       return { ...ui, visibleGroup: action.value };
+    case "setVisiblePage":
+      return { ...ui, visiblePage: action.value };
     default:
       console.warn("Hit default in uiReducer. Something might be up.")
       return ui;

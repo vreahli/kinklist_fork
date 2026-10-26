@@ -56,7 +56,7 @@ const GroupPreference = () => {
 }
 
 const PreferenceRow = ({kink, group}) => {
-  return html`<div class="md:flex md:justify-between mb-4">
+  return html`<div class="md:flex md:justify-between mb-2">
     <div>${kink}</div>
     <${PreferenceRowPicker} kink=${kink} group=${group}/>
   </div>`
@@ -80,8 +80,7 @@ const PreferenceRowPicker = ({kink, group}) => {
                 setAnswer(i + 1)
               }}
             >
-              <span class="hidden TODO-SCREEN-READER"></span>
-              <span class="font-mono leading-0">[${iPlus == NO_PREF ? "-" : iPlus == WANT_TO_TRY ? "+" : iPlus}]</span>
+              ${iPlus == NO_PREF ? "-" : iPlus == WANT_TO_TRY ? "+" : iPlus}
             </${MatrixButton}>
           `})}
         </div>
@@ -101,7 +100,7 @@ const GroupPicker = ({}) => {
               () => { dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup - 1) % GROUPS.length})
                 window.scrollTo({top: 0, behavior: 'smooth'})
               }}
-            >${"<"} Prev </${Button}>`
+            >${"<"}Prev</${Button}>`
           : html`<span></span>`
         }
         ${(ui.visibleGroup + 1 < GROUPS.length)
@@ -110,7 +109,7 @@ const GroupPicker = ({}) => {
               () => { dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup + 1) % GROUPS.length})
                 window.scrollTo({top: 0, behavior: 'smooth'})
               }}
-            >Next ${">"}</${Button}>`
+            >Next${">"}</${Button}>`
           : html``
         }
       </div>

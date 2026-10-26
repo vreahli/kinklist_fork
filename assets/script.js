@@ -4,6 +4,7 @@ import { html } from './html.js';
 import { Picker } from './picker.js';
 import { Display } from './display.js';
 import { PAGE_DISPLAY, PAGE_PICKER } from './ui.js';
+import { Button } from './Button.js';
 
 // http://localhost:3000/kinklist#1_433773444345324433323534444453343113111552224112455342434343234112266443555323413654512322432332334346262444323331321334434336366664466343533636343641111114444111122216411111323643522242311111173734433114455431154114435
 
@@ -13,7 +14,15 @@ const App = () => {
   return html`
     <div class="text-fg">
       <div class="max-w-3xl mx-auto p-2">
-        <div class="py-2">
+        <div class="">
+          <div class="flex gap-4">
+            <${Button} onClick=${() => {
+              dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY})
+            }}>Display</${Button}>
+            <${Button} onClick=${() => {
+              dispatchUi({type: "setVisiblePage", value: PAGE_PICKER})
+            }}>Picker</${Button}>
+          </div>
           ${  ui.visiblePage === PAGE_DISPLAY ? html`<${Display} />`
             : ui.visiblePage === PAGE_PICKER ? html`<${Picker} />`
             : html`<h1>Error - invalid page. </h1>`

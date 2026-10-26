@@ -26,16 +26,22 @@ export const Display = () => {
 
   return html `
     ${Object.entries(displayGroups).map(([sideCaption, sideGroup]) => html`
-      <h1 class="text-2xl">${sideCaption}</h1>
-      <div class="grid grid-cols-2 gap-2 mb-4">
+      <h1 class="text-2xl leading-none mb-2">${sideCaption}</h1>
+      <div class="grid grid-cols-2 gap-4 mb-4">
         ${sideGroup.map(({caption, descriptions, kinkVals, scale}) => html`
-          <div class="p-2 border">
-            <h1 class="text-xl uppercase leading-tight mb-4">${caption}</h1>
-            ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => html`
-              <p>
-                <span>${getPrefText(scale, prefVal)}</span> - ${kinks.map(k => html`<span>${k}</span> `)}
+          <div class="border-l-2 pl-2">
+            <h1 class="text-xl uppercase leading-none mb-2">${caption}</h1>
+            ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => {
+              const valInt = parseInt(prefVal);
+              const highlight =
+                  valInt === 6 ? "bg-green-400"
+                : valInt === 5 ? "bg-green-400"
+                : valInt === 1 ? "bg-red-400"
+                : "";
+              return html`<p class="text-xs ${highlight}">
+                <span class="font-bold">${getPrefText(scale, prefVal)}</span> - <span>${kinks.join(', ')}</span>
               </p>
-            `)}
+            `;})}
           </div>
         `)}
       </div>

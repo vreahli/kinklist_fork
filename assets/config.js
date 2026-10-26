@@ -1,5 +1,4 @@
 const MD = `
-
 ## Gender Preferences
 
 What do you like? Rate what you're drawn to.
@@ -19,7 +18,7 @@ Scale: interest
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: Me
 Scale: love
@@ -30,7 +29,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -39,14 +38,13 @@ Scale: love
 - Working quickly
 - Working with an unknown partner
 - Working without a plan
-- Knowing what will happen ahead of time
-- Long trance sessions (maybe split tist/subject)
+- Long trance sessions
 
 ## Role Preferences
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: Me
 Scale: love
@@ -57,7 +55,7 @@ Scale: love
 
 ## About Me - Responses
 
-[1] = strongly disagree. [5] = strongly agree. [+] = want to try. [-] = not applicable / don't care.
+[1] = strongly disagree. [5] = strongly agree. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: Me
 Scale: love
@@ -74,7 +72,7 @@ Scale: love
 
 Desc todo. PROBLEM - mixture of like/dislike and needs.
 
-[1] = don't want. [3] = nice to have. [5] = must have. [+] = want to try. [-] = not applicable / don't care. TODO DROP + NO TRY
+[1] = don't want. [3] = nice to have. [5] = must have. [+] = want to try. [-] = not applicable / don't care (hidden). TODO DROP + NO TRY
 
 Sides: Me
 Scale: needs
@@ -83,12 +81,13 @@ Scale: needs
 - A quick wake up
 - Time to reorient after a zonk
 - Removing triggers after the session
+- Knowing what will happen ahead of time
 
 ## Setting
 
 Where you want to do hypnosis.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -103,7 +102,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -121,7 +120,7 @@ Scale: love
 
 Todo - mention flashing lights carry an epilepsy risk. 
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -138,7 +137,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -155,7 +154,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -172,7 +171,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -186,7 +185,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -198,7 +197,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -212,7 +211,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -233,7 +232,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -252,7 +251,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -270,7 +269,7 @@ Scale: love
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -286,7 +285,7 @@ Scale: love
 
 How do you want to feel during a session as a subject? Or - how do you like to make your subject feel during a session.
 
-[1] = I hate feeling... [5] = I love feeling... [+] = want to try. [-] = not applicable / don't care.
+[1] = I hate feeling... [5] = I love feeling... [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love_feeling
@@ -303,7 +302,7 @@ Scale: love_feeling
 
 Desc todo.
 
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care.
+[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -314,7 +313,6 @@ Scale: love
 - Pain triggers
 - Using triggers without warning
 - Dropping without warning
-
 
 `;
 
