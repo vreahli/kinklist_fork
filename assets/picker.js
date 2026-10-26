@@ -39,9 +39,6 @@ const GroupPreference = () => {
               ${getScaleDescriptionLine(scaleConfig)}
             </p>
           </div>
-          <div>
-            <!-- <${Matrix} /> TODO - add matrix back in... if it's worth it. -->
-          </div>
         </div>
         
         <div class="md:flex md:justify-between">
@@ -53,7 +50,7 @@ const GroupPreference = () => {
           </div>
 
         </div>
-        <${GroupProgress} />
+        <${ProgressBar} />
       </div>
       ${group.kinks.map(kink => html`
         <${PreferenceRow} kink=${kink} group=${group}/>
@@ -139,40 +136,21 @@ const GroupPicker = ({}) => {
         }
 
       </div>
-      <ul class="font-mono flex gap-2 flex-wrap text-xs">
-        ${GROUPS.map((group, i) => html`
+      <p class="font-mono flex gap-2 flex-wrap text-xs">
+        <span class="font-bold">Preference groups:</span> ${GROUPS.map((group, i) => html`
           <button
-            class="inline ${i === ui.visibleGroup ? "bg-accent text-background" : "text-muted"}"
+            class="inline cursor-pointer ${i === ui.visibleGroup ? "bg-accent text-background" : "text-muted"}"
             onClick=${() => {
               dispatchUi({type: "setVisibleGroup", value: i})
             }}
-          >${group.caption}</button>
+          >[${group.caption}]</button>
         `)}
-      </ul>
+      </p>
     </div>
   `
 }
 
-const Matrix = () => {
-  return html`
-    <div class="w-24 md:w-48 flex flex-wrap">
-      ${GROUPS.map(g => g.sides.map((s, si) => g.kinks.map(k => {
-        const key = keyOf(g, k, si);
-        const [answer, dispatchAnswer] = useAnswer(key);
-        const color = answer === 0 ? "bg-accent/10"
-          : answer === 1 ? "bg-accent/30"
-          : answer === 2 ? "bg-accent/40"
-          : answer === 3 ? "bg-accent/50"
-          : answer === 4 ? "bg-accent/60"
-          : answer === 5 ? "bg-accent/70"
-          : "bg-accent/80";
-        return html`<span class="w-1 h-1 md:w-2 md:h-2 ${color} shrink-0"></span>`
-      })))}
-    </div>
-  `
-}
-
-const GroupProgress = () => {
+const ProgressBar = () => {
   const [ui, dispatchUi] = useUi();
   const [answers] = useAnswers();
   const currentGroup = GROUPS[ui.visibleGroup];
