@@ -8,6 +8,7 @@ import { Button } from './Button.js';
 import { useAnswers } from './app.js';
 import { Share } from './share.js';
 import { Land } from './land.js'
+import { decodeHash } from "./answers.js";
 
 const App = () => {
   const [ui, dispatchUi] = useUi();
@@ -34,13 +35,13 @@ const App = () => {
                 dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY_ME})
               }}
               state=${ui.visiblePage === PAGE_DISPLAY_ME ? "active" : "inactive"}
-            >Display My Prefs</${Button}>
-            <${Button}
+            >My Prefs</${Button}>
+            ${Object.keys(decodeHash()).length !== 0 ? html`<${Button}
               onClick=${() => {
                 dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY_LINKED})
               }}
               state=${ui.visiblePage === PAGE_DISPLAY_LINKED ? "active" : "inactive"}
-            >Display Linked Prefs</${Button}>
+            >Their Prefs</${Button}>` : html``}
             <${Button}
               onClick=${() => {
                 dispatchUi({type: "setVisiblePage", value: PAGE_SHARE})

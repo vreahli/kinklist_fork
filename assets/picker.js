@@ -5,6 +5,7 @@ import { encode, keyOf, WANT_TO_TRY, NO_PREF, UNANSWERED } from './answers.js';
 import { useEffect } from 'preact/hooks';
 import { MatrixButton, Button } from './Button.js'
 import { setLocalStorage } from './localStorage.js';
+import { PAGE_SHARE } from './ui.js';
 
 export const Picker = () => {
   const [answers, dispatchAnswers] = useAnswers();
@@ -127,6 +128,16 @@ const GroupPicker = ({}) => {
             >Next${">"}</${Button}>`
           : html``
         }
+        ${(ui.visibleGroup + 1 == GROUPS.length)
+          ? html`
+            <${Button} onClick=${
+              () => { dispatchUi({type: "setVisiblePage", value: PAGE_SHARE })
+                window.scrollTo({top: 0, behavior: 'smooth'})
+              }}
+            >Share${">"}</${Button}>`
+          : html``
+        }
+
       </div>
       <ul class="font-mono flex gap-2 flex-wrap text-xs">
         ${GROUPS.map((group, i) => html`

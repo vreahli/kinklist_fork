@@ -30,8 +30,6 @@ export const Display = (answerSource) => {
     return acc;
   }, {})
 
-  Object.keys(displayGroups);
-
   return html `
     <div class="flex border-b-4 border-accent mb-4 sticky top-0 bg-background">
       ${Object.keys(displayGroups).map(dg => html`

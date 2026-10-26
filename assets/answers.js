@@ -17,11 +17,13 @@ export const answersReducer = (answers, action) => {
       else next[action.key] = action.value;
       return next;
     }
-    case "ClearAll": {
+    case "clearAll": {
       return {}
     }
     default:
+      console.warn({answers, action})
       console.warn('Default action on the answers reducer... something might be going wrong.')
+      
       return answers;
   }
 }
