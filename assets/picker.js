@@ -2,7 +2,7 @@ import { html } from './html.js';
 import { AppProvider, useAnswer, useAnswers, useUi } from './app.js';
 import { GROUPS, SCALES } from './config.js';
 import { encode, keyOf, WANT_TO_TRY, NO_PREF, UNANSWERED } from './answers.js';
-import { useEffect } from 'preact/hooks';
+import { useEffect, useLayoutEffect } from 'preact/hooks';
 import { MatrixButton, Button } from './Button.js'
 import { setLocalStorage } from './localStorage.js';
 import { PAGE_SHARE } from './ui.js';
@@ -11,7 +11,6 @@ export const Picker = () => {
   const [answers, dispatchAnswers] = useAnswers();
   const encoded = encode(answers);
   useEffect(() => { setLocalStorage(encoded); }, [encoded]);
-  console.warn('TODO - should answers be crammed into localstorage instead?');
 
   return html`
     <${GroupPreference}/>
@@ -104,6 +103,10 @@ const PreferenceRowPicker = ({kink, group}) => {
 const GroupPicker = ({}) => {
   const [ui, dispatchUi] = useUi();
 
+  useLayoutEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }, [ui.visibleGroup])
+
   return html`
     <div class="">
       <div class="flex justify-between mb-4">
@@ -112,7 +115,6 @@ const GroupPicker = ({}) => {
             <${Button} onClick=${
               () => {
                 dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup - 1) % GROUPS.length});
-                window.scrollTo({top: 0, behavior: 'instant'});
               }}
             >${"<"}Prev</${Button}>`
           : html`<span></span>`
@@ -121,7 +123,6 @@ const GroupPicker = ({}) => {
             ? html`
               <${Button} onClick=${
               () => {
-                window.scrollTo({top: 0, behavior: 'instant'});
                 dispatchUi({type: "setVisibleGroup", value: (ui.visibleGroup + 1) % GROUPS.length});
               }}
             >Next${">"}</${Button}>`
@@ -131,7 +132,6 @@ const GroupPicker = ({}) => {
           ? html`
             <${Button} onClick=${
               () => {
-                window.scrollTo({top: 0, behavior: 'instant'});
                 dispatchUi({type: "setVisiblePage", value: PAGE_SHARE });
               }}
             >Share${">"}</${Button}>`
