@@ -3,10 +3,11 @@ import { AppProvider, useUi } from './app.js';
 import { html } from './html.js';
 import { Picker } from './picker.js';
 import { Display } from './display.js';
-import { PAGE_DISPLAY_ME, PAGE_DISPLAY_LINKED, PAGE_PICKER, PAGE_SHARE } from './ui.js';
+import { PAGE_DISPLAY_ME, PAGE_DISPLAY_LINKED, PAGE_PICKER, PAGE_SHARE, PAGE_LAND } from './ui.js';
 import { Button } from './Button.js';
 import { useAnswers } from './app.js';
 import { Share } from './share.js';
+import { Land } from './land.js'
 
 const App = () => {
   const [ui, dispatchUi] = useUi();
@@ -16,6 +17,12 @@ const App = () => {
       <div class="max-w-3xl mx-auto p-2">
         <div class="">
           <div class="flex gap-4">
+            <${Button}
+              onClick=${() => {
+                dispatchUi({type: "setVisiblePage", value: PAGE_LAND})
+              }}
+              state=${ui.visiblePage === PAGE_LAND ? "active" : "inactive"}
+            >Welcome</${Button}>
             <${Button}
               onClick=${() => {
                 dispatchUi({type: "setVisiblePage", value: PAGE_PICKER})
@@ -45,6 +52,7 @@ const App = () => {
             : ui.visiblePage === PAGE_DISPLAY_LINKED ? html`<${Display} />`
             : ui.visiblePage === PAGE_PICKER         ? html`<${Picker} />`
             : ui.visiblePage === PAGE_SHARE          ? html`<${Share} />`
+            : ui.visiblePage === PAGE_LAND           ? html`<${Land} />`
             : html`<h1>Error - invalid page. </h1>`
           }
         </div>
@@ -57,7 +65,5 @@ const App = () => {
     </footer>
   `;
 }
-
-
 
 render(html`<${AppProvider}><${App} /></${AppProvider}>`, document.body);
