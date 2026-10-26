@@ -1,7 +1,7 @@
 const MD = `
 ## Gender Preferences
 
-What do you like? Rate what you're drawn to. Or just mark everything as NA if you don't care.
+What do you like? Rate what you're drawn to. Or just rate everything as N/A if you don't care.
 
 Sides: Me
 Scale: interest
@@ -48,7 +48,7 @@ Scale: love
 
 ## Responses
 
-How do you respond suggestion, in general? This can change over time and depending on context.
+How do you respond suggestion, in general? This can change over time and depending on context. BTW - anyone can talk/type while in trance with some effort.
 
 Sides: Me
 Scale: agree

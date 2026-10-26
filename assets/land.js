@@ -1,7 +1,7 @@
 import { html } from "./html.js"
 import { Button } from "./Button.js"
 import { useAnswers, useUi } from "./app.js"
-import { PAGE_DISPLAY_LINKED } from "./ui.js"
+import { PAGE_DISPLAY_LINKED, PAGE_PICKER } from "./ui.js"
 import { decodeHash } from "./answers.js";
 
 export const Land = () => {
@@ -15,9 +15,11 @@ export const Land = () => {
 
         <p class="mb-4">This preference picker doesn't cover consent preferences. You should talk with your partner about that, not punch it into a list. Works best on desktop. Rotate your phone to the side if the page won't fit.</p>
 
+        <p class="mb-4">Pick your own preferences <span class="underline cursor-pointer font-bold" onClick=${() => { dispatchUi({type: "setVisiblePage", value: PAGE_PICKER })}}>here</span>.</p>
+
         ${Object.keys(decodeHash()).length === 0
           ? html``
-          : html`<p class="mb-4 pl-4 border-l-2 border-l-muted">Looks like someone linked their preferences. Take a look <span class="underline cursor-pointer font-bold" onClick=${() => { dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY_LINKED})}}>here</span>.</p>`
+          : html`<p class="mb-4 pl-4 border-l-2 border-l-muted">Looks like someone linked their preferences. Take a look <span class="underline cursor-pointer font-bold" onClick=${() => { dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY_LINKED})}}>here</span>. <br /> <span class="text-xs">(This can also happen if you went to your own link.)</span></p>`
         }
 
       </div>
