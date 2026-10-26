@@ -54,8 +54,8 @@ export const Display = (answerSource) => {
           ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => {
             const valInt = parseInt(prefVal);
             const highlight =
-                valInt === 6 ? "bg-green-400"
-              : valInt === 5 ? "bg-green-400"
+                valInt === 6 ? "bg-accent"
+              : valInt === 5 ? "bg-accent"
               : valInt === 1 ? "bg-red-400"
               : "";
             return html`<p class="text-xs ${highlight}">
