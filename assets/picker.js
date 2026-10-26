@@ -1,6 +1,6 @@
 import { html } from './html.js';
 import { AppProvider, useAnswer, useAnswers, useUi } from './app.js';
-import { GROUPS } from './config.js';
+import { GROUPS, SCALES } from './config.js';
 import { encode, keyOf, WANT_TO_TRY, NO_PREF } from './answers.js';
 import { useEffect } from 'preact/hooks';
 import { MatrixButton, Button } from './Button.js'
@@ -23,6 +23,8 @@ const GroupPreference = () => {
 
   const group = GROUPS[ui.visibleGroup];
 
+  const scale = (SCALES[group.scale])['prefText'];
+
   return html`
     <div class="">
       <h3 class="text-lg uppercase mb-2">${group.caption}</h3>
@@ -32,6 +34,9 @@ const GroupPreference = () => {
         <div class="flex gap-4">
           <div>
             <p class="text-muted leading-tight mb-4" dangerouslySetInnerHTML=${{__html: group.descriptions.at(-1)}}></p>
+            <p class="text-muted leading-tight mb-4">
+              ${scale.map((t, i) => html`<span class="font-bold font-mono">[${getNumText(i)}]</span> = <span>${t}</span>. `)}
+            </p>
           </div>
           <div>
             <!-- <${Matrix} /> TODO - add matrix back in... if it's worth it. -->
@@ -81,7 +86,7 @@ const PreferenceRowPicker = ({kink, group}) => {
                 setAnswer(i + 1)
               }}
             >
-              ${iPlus == NO_PREF ? "-" : iPlus == WANT_TO_TRY ? "+" : iPlus}
+              ${getNumText(iPlus)}
             </${MatrixButton}>
           `})}
         </div>
@@ -160,4 +165,9 @@ const GroupProgress = () => {
       <div class="h-1 bg-accent" style="width: ${(answeredCount / currentGroupKeys.length)*100}%" ></div>
     </div>
   `
+}
+
+const getNumText = (iStr) => {
+  const i = parseInt(iStr);
+  return i == NO_PREF ? "-" : i == WANT_TO_TRY ? "+" : i;
 }

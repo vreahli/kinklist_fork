@@ -3,8 +3,6 @@ const MD = `
 
 What do you like? Rate what you're drawn to.
 
-[1] = not interested. [5] = very interested. [+] = want to try. [-] = don't care.
-
 Sides: Me
 Scale: interest
 
@@ -14,11 +12,9 @@ Scale: interest
 - Cis partners
 - Trans partners
 
-## About Me - Spectating
+## Spectating
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Do you like to watch?
 
 Sides: Me
 Scale: love
@@ -27,22 +23,18 @@ Scale: love
 - Watching others do hypnosis
 ## Session Preferences
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+How do you like your sessions/partners?
 
 Sides: As Subject, As Hypnotist
 Scale: love
 
 - Working slowly
 - Working quickly
+- Long trance sessions
 - Working with an unknown partner
 - Working without a plan
-- Long trance sessions
 
 ## Role Preferences
-
-Desc todo.
 
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
@@ -52,13 +44,12 @@ Scale: love
 - Subbing
 - Domming
 - Switching
+- No power dynamics
 
-## About Me - Responses
-
-[1] = strongly disagree. [5] = strongly agree. [+] = want to try. [-] = not applicable / don't care (hidden).
+## Responses
 
 Sides: Me
-Scale: love
+Scale: agree
 
 - I experience phenomena easily
 - I drop very easily
@@ -68,11 +59,9 @@ Scale: love
 - I experience amnesia after coming back
 - I can talk/type while under
 
-## About Me - Care and Aftercare
+## Care and Aftercare
 
-Desc todo. PROBLEM - mixture of like/dislike and needs.
-
-[1] = don't want. [3] = nice to have. [5] = must have. [+] = want to try. [-] = not applicable / don't care (hidden). TODO DROP + NO TRY
+Care preferences? If you don't mind either way, just mark it as N/A / No Preference.
 
 Sides: Me
 Scale: needs
@@ -82,12 +71,12 @@ Scale: needs
 - Time to reorient after a zonk
 - Removing triggers after the session
 - Knowing what will happen ahead of time
+- I need aftercare as the subject
+- I need aftercare as the 'tist
 
 ## Setting
 
-Where you want to do hypnosis.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Where you want to do hypnosis?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -100,9 +89,7 @@ Scale: love
 
 ## Group, Audience and Exhibition
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+What if other people are involved?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -117,8 +104,6 @@ Scale: love
 - Open play in kink groups
 
 ## Stimuli
-
-Todo - mention flashing lights carry an epilepsy risk. 
 
 [1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
 
@@ -135,9 +120,7 @@ Scale: love
 
 ## Styles
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+What ritual flavors do you like?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -152,9 +135,7 @@ Scale: love
 
 ## Inductions
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+What types of inductions do you like? (Y'know they're optional, right?)
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -166,12 +147,11 @@ Scale: love
 - Recalling Last trance
 - Instant inductions
 - Fractionation
+- No Induction / Waking
 
 ## Mind and Memory
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Mental stuff. What do you like?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -183,9 +163,7 @@ Scale: love
 
 ## Tropes
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+What tropes do you like?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -195,9 +173,7 @@ Scale: love
 - Brainwashing
 ## Role Enactment
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Roles that often go hand in hand with hypnosis. What's your jam?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -209,9 +185,7 @@ Scale: love
 
 ## Phenomena / Sensations
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Do you like any specific phenomena?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -230,9 +204,7 @@ Scale: love
 
 ## Transformation
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Transformation scenes? What flavors?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -249,9 +221,7 @@ Scale: love
 
 ## Power and D/s
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+If you do like power dynamics - what types?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -267,9 +237,7 @@ Scale: love
 - Hypnotic bondage
 ## Sexual
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+Do you do horny stuff during hypnosis? Gross. Better say what you're in to.
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -285,8 +253,6 @@ Scale: love
 
 How do you want to feel during a session as a subject? Or - how do you like to make your subject feel during a session.
 
-[1] = I hate feeling... [5] = I love feeling... [+] = want to try. [-] = not applicable / don't care (hidden).
-
 Sides: As Subject, As Hypnotist
 Scale: love_feeling
 
@@ -300,9 +266,7 @@ Scale: love_feeling
 
 ## Edge / CNC / S&M
 
-Desc todo.
-
-[1] = hate it. [5] = love it. [+] = want to try. [-] = not applicable / don't care (hidden).
+More into ghost peppers than paprika? What sorta spice levels do you like?
 
 Sides: As Subject, As Hypnotist
 Scale: love
@@ -328,6 +292,9 @@ export const SCALES = {
   },
   "love_feeling": {
     prefText: ["Unspecified", "Hate feeling", "Dislike", "Neutral", "Like feeling", "Love feeling", "Want to try", "Don't care / NA"]
+  },
+  "agree": {
+    prefText: ["Unspecified", "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree", "UNUSED", "Don't care / NA"]
   },
 }
 
