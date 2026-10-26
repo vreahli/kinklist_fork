@@ -4,11 +4,12 @@ import { GROUPS } from './config.js';
 import { encode, keyOf, WANT_TO_TRY, NO_PREF } from './answers.js';
 import { useEffect } from 'preact/hooks';
 import { MatrixButton, Button } from './Button.js'
+import { setLocalStorage } from './localStorage.js';
 
 export const Picker = () => {
   const [answers, dispatchAnswers] = useAnswers();
   const encoded = encode(answers);
-  useEffect(() => { history.replaceState(null, '', '#' + encoded)}, [encoded]);
+  useEffect(() => { setLocalStorage(encoded); }, [encoded]);
   console.warn('TODO - should answers be crammed into localstorage instead?');
 
   return html`

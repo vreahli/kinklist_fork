@@ -3,8 +3,9 @@ import { AppProvider, useUi } from './app.js';
 import { html } from './html.js';
 import { Picker } from './picker.js';
 import { Display } from './display.js';
-import { PAGE_DISPLAY, PAGE_PICKER } from './ui.js';
+import { PAGE_DISPLAY_ME, PAGE_DISPLAY_LINKED, PAGE_PICKER } from './ui.js';
 import { Button } from './Button.js';
+import { useAnswers } from './app.js';
 
 const App = () => {
   const [ui, dispatchUi] = useUi();
@@ -16,19 +17,26 @@ const App = () => {
           <div class="flex gap-4">
             <${Button}
               onClick=${() => {
-                dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY})
-              }}
-              state=${ui.visiblePage === PAGE_DISPLAY ? "active" : "inactive"}
-            >Display</${Button}>
-            <${Button}
-              onClick=${() => {
                 dispatchUi({type: "setVisiblePage", value: PAGE_PICKER})
               }}
               state=${ui.visiblePage === PAGE_PICKER ? "active" : "inactive"}
             >Picker</${Button}>
+            <${Button}
+              onClick=${() => {
+                dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY_ME})
+              }}
+              state=${ui.visiblePage === PAGE_DISPLAY_ME ? "active" : "inactive"}
+            >Display My Prefs</${Button}>
+            <${Button}
+              onClick=${() => {
+                dispatchUi({type: "setVisiblePage", value: PAGE_DISPLAY_LINKED})
+              }}
+              state=${ui.visiblePage === PAGE_DISPLAY_LINKED ? "active" : "inactive"}
+            >Display Linked Prefs</${Button}>
           </div>
-          ${  ui.visiblePage === PAGE_DISPLAY ? html`<${Display} />`
-            : ui.visiblePage === PAGE_PICKER ? html`<${Picker} />`
+          ${  ui.visiblePage === PAGE_DISPLAY_ME     ? html`<${Display} />`
+            : ui.visiblePage === PAGE_DISPLAY_LINKED ? html`<${Display} />`
+            : ui.visiblePage === PAGE_PICKER         ? html`<${Picker} />`
             : html`<h1>Error - invalid page. </h1>`
           }
         </div>

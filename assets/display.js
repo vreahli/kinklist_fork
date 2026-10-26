@@ -1,13 +1,15 @@
 import { html } from './html.js';
 import { GROUPS, getPrefText } from './config.js'
 import { useAnswers } from "./app.js";
-import { keyOf } from './answers.js';
+import { keyOf, decodeHash } from './answers.js';
 import { useUi } from './app.js';
 import { Button } from './Button.js';
+import { PAGE_DISPLAY_LINKED, PAGE_DISPLAY_ME } from './ui.js';
 
-export const Display = () => {
-  const [answers, dispatchAnswers] = useAnswers();
+export const Display = (answerSource) => {
+
   const [ui, dispatchUi] = useUi();
+  const answers = getAnswers();
 
   console.warn('todo - should this get answers from the loaded url? Should I pick local or url?');
 
@@ -64,6 +66,18 @@ export const Display = () => {
       `)}
     </div>
   `;
+}
+
+const getAnswers = (answerSource) => {
+  const [ui] = useUi();
+  if(ui.visiblePage == PAGE_DISPLAY_ME) {
+    const [answers, dispatchAnswers] = useAnswers();
+    return answers;
+  } else if (ui.visiblePage == PAGE_DISPLAY_LINKED) {
+    return decodeHash();
+  } else {
+    console.warn('invalid page in display.js.');
+  }
 }
 
 // pass answers in so we don't have to reload it each time

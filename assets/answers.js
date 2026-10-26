@@ -55,3 +55,7 @@ export const decode = str => {
 
   return answers;
 }
+
+export const decodeHash = () => {
+  return decode(window.location.hash ? window.location.hash.slice(1) :  "");
+}
