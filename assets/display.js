@@ -1,7 +1,7 @@
 import { html } from './html.js';
 import { GROUPS, getPrefText } from './config.js'
 import { useAnswers } from "./app.js";
-import { keyOf, decodeHash } from './answers.js';
+import { keyOf, decodeHash, WANT_TO_TRY } from './answers.js';
 import { useUi } from './app.js';
 import { Button } from './Button.js';
 import { PAGE_DISPLAY_LINKED, PAGE_DISPLAY_ME } from './ui.js';
@@ -10,8 +10,6 @@ export const Display = (answerSource) => {
 
   const [ui, dispatchUi] = useUi();
   const answers = getAnswers();
-
-  console.warn('todo - should this get answers from the loaded url? Should I pick local or url?');
 
   const displayGroups = GROUPS.reduce((acc, g) => {
     const {caption, descriptions, scale} = g;
@@ -44,17 +42,24 @@ export const Display = (answerSource) => {
         <span class="w-4"></span>
       `)}
     </div>
+
+
     
-    <div class="grid grid-cols-2 gap-4 mb-4">
+    <div class="2xl:breakout"><div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl uppercase mb-2 font-bold">${ui.displaySide === "Me" ? "About Me"
+        : ui.displaySide === "As Hypnotist" ? "As the Hypnotist"
+        : ui.displaySide === "As Subject"   ? "As the Subject"
+        : "Unknown Side" }</h2>
+      <div class="columns-2 2xl:columns-3">
       ${(displayGroups[ui.displaySide]).map(({caption, descriptions, kinkVals, scale}) => html`
-        <div class="border-l-2 pl-2">
+        <div class="border-l-2 pl-2 mb-4 break-inside-avoid">
           <h1 class="text-xl uppercase leading-none mb-2">${caption}</h1>
           ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => {
             const valInt = parseInt(prefVal);
             const highlight =
-                valInt === 6 ? "bg-accent"
-              : valInt === 5 ? "bg-accent"
-              : valInt === 1 ? "bg-red-400"
+                valInt === WANT_TO_TRY ? "bg-blue-200/70"
+              : valInt === 5 ? "bg-yellow-200/70"
+              : valInt === 1 ? "bg-red-200/70"
               : "";
             return html`<p class="text-xs ${highlight}">
               <span class="font-bold">${getPrefText(scale, prefVal)}</span> - <span>${kinks.join(', ')}</span>
@@ -62,7 +67,8 @@ export const Display = (answerSource) => {
           `;})}
         </div>
       `)}
-    </div>
+      </div>
+    </div></div>
   `;
 }
 

@@ -58,10 +58,9 @@ const App = () => {
           }
         </div>
       </div>
-
     </div>
 
-    <footer class="text-muted max-w-3xl mx-auto p-2 text-center">
+    <footer class="text-muted max-w-3xl mx-auto px-2 text-center mt-6">
       By <a class="hover:text-accent" href="https://yourinductionsucks.fyi">yourinductionsucks.fyi</a> . <a class="hover:text-accent" href="https://github.com/vreahli/kinklist_fork">GitHub</a> . Forked from <a class="hover:text-accent" href="https://github.com/NanoAi/KinkList">NanoAi</a> <br /> Data stolen and modified originally from some dude called Herald
     </footer>
   `;

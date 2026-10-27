@@ -13,7 +13,7 @@ export const Land = () => {
         <div class="my-4">
         <p class="mb-4 text-2xl">A place to share hypnokink likes/dislikes privately with a friend.</p>
 
-        <p class="mb-4">This preference picker doesn't cover consent preferences. You should talk with your partner about that, not punch it into a list. Works best on desktop. Rotate your phone to the side if the page won't fit.</p>
+        <p class="mb-4">This preference picker doesn't cover consent preferences. You should talk with your partner about that, not punch it into a list. Works best on desktop. <span class="font-bold">Rotate your phone to landscape if the page won't fit.</b></p>
 
         <p class="mb-4">Pick your own preferences <span class="underline cursor-pointer font-bold" onClick=${() => { dispatchUi({type: "setVisiblePage", value: PAGE_PICKER })}}>here</span>.</p>
 
