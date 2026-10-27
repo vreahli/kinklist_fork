@@ -57,9 +57,10 @@ export const Display = (answerSource) => {
           ${Object.entries(kinkVals).toReversed().map(([prefVal, kinks]) => {
             const valInt = parseInt(prefVal);
             const highlight =
-                valInt === WANT_TO_TRY ? "bg-blue-200/70"
-              : valInt === 5 ? "bg-yellow-200/70"
-              : valInt === 1 ? "bg-red-200/70"
+                valInt === WANT_TO_TRY ? "px-1 text-white bg-blue-600"
+              : valInt === 5           ? "px-1 text-white bg-accent"
+              : valInt === 4           ? "px-1 text-black bg-accent/20"
+              : valInt === 1           ? "px-1 text-white bg-red-600"
               : "";
             return html`<p class="text-xs ${highlight}">
               <span class="font-bold">${getPrefText(scale, prefVal)}</span> - <span>${kinks.join(', ')}</span>
