@@ -1,10 +1,5 @@
-# KinkList
-Easily create kink list
+# Hypnosis Preferences
 
-[Make yours here](https://raw.githack.com/NanoAi/KinkList/master/kinklist.html)
+[View / select yours here.](https://rawcdn.githack.com/vreahli/kinklist_fork/200b3f06ff79a004582868fe4a929594d4b38ea0/kinklist.html)
 
-#### Example
-
-![Example kinklist](https://i.imgur.com/hMuRllD.png)
-
-Also, each time you make a change to your kinklist, the URL updates. Giving you a *unique* URL to share your kinklist with others.
+Forked from [NanoAi](https://github.com/NanoAi/KinkList)
